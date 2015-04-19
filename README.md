@@ -38,4 +38,4 @@
 <a href="http://es.tinypic.com?ref=nodlag" target="_blank"><img src="http://i59.tinypic.com/nodlag.jpg" border="0" alt="Image and video hosting by TinyPic"></a>
 
 <h4>Presenting the dish: Graphical User Interface</h4>
-
+<p>not-gs and javascript (interprates json) draws the heat map. </p>
