@@ -1,14 +1,14 @@
 # Sensor Your Swarm Project
 
-<p>Picture hundreds of mini-robots sensing dangerous area that will allow us to determine a safe path and to avoid deathly objects. This is what our project attempts to display.</p>
+<p>Picture hundreds of mini-robots sensing a dangerous area and a processing system that will allow the user to determine a safe path and to avoid deathly objects. This is how our solution faces the challenge "Sensor Yourself".</p>
 
 <IMG SRC="http://i.dailymail.co.uk/i/pix/2011/08/23/article-0-02D26216000005DC-732_468x375.jpg" ALT="some text" WIDTH=320 HEIGHT=320>---------<IMG SRC="http://groups.csail.mit.edu/drl/BoeingPages/ResearchProblems/whole-swarm-from-above.jpg" ALT="some text" WIDTH=320 HEIGHT=320>
 
-<h3>Sensing a hazardous location with a swarm of random walkers</h3>
+<h4>Sensing a hazardous location with a swarm of random walkers</h4>
 
-<p>Sensing your swarm proposes an idea that provides humans a way to navigate in dangerous environments such as airplanes accidents, shipwrenks and outer space exploring situations. As a bio-inspired robotic system, this project hands in a prototype which mimics the random movement of flies swarms and applies it to measure risky gases and deathly temperatures in hazardous locations. This multiple measurements allows us to graph on a web-page a safe path through the field dodging obstacles. Furthermore, in this project a main robot acts as a guide dog which could lead a person along the safe path while it is gathering all the information sent by each measurement terminal (mini-robot).</p>
+<p>"Sensor Your Swarm" provides humans a way to navigate in dangerous environments such as airplanes accidents, shipwrenks and outer space exploring situations. As a bio-inspired robotic system, this project hands in a prototype which mimics the random movement of flies swarms and applies it to measure risky gases and deathly temperatures in hazardous locations. This multiple measurements allows us to graph on a web-page a safe path through the field dodging obstacles. Furthermore, in this project a main robot acts as a guide dog which could lead a person along the safe path while it is gathering all the information sent by each measurement terminal (mini-robot).</p>
 
-<h3>System's architecture</h3>
+<h4>System's architecture</h4>
 
 <p>The robotic system's architecture is divided into four layers. At the lowest place lies the mini-robots (miniBots) which randomly measure parameters all over the field. Each of this independent units carries two sensors: the first one is used to measure risky gases, such as butane or monoxide, and the second one is used to measure perilous temperatures over the terrain. Moreover, each of these units also incoporates a RF-module, which is based on the SPI protocol, for communicational purposes. The whole swarm of miniBots builds a star-shaped network architecture that sends all the sensed information towards the next layer. In the next layer, it is the guide-gateway robot (GG-Bot) which channels all the information towards the server using a json object within a http-post. Every post contains the identifier and the measurements asociated to each miniBot.</p>
 
@@ -33,9 +33,9 @@
 <a href="http://es.tinypic.com?ref=23kxhyg" target="_blank"><img src="http://i61.tinypic.com/23kxhyg.jpg" border="0" alt="Image and video hosting by TinyPic"></a>
 
 <h4>Inside of the Multi Object Tracking System</h4>
-<p>The MOT system determines the position of all the robots based on the color marks placed over the robots. That is, using colored squares on the top of the robots and a HD-cam this system calculates the position based on morphological operations and color filters embedded in the Open CV libraries. All the code has been written in C++ to approximate a real time calculation. Besides, the MOT system is also connected to the Wi-Fi network, and it sends jsons objects within http posts which contain the position of each robot. This information is used to draw a potential field of heat which represents the temperature mantle over the field.</p>
+<p>The MOT system determines the position of all the robots based on the color marks placed over the robots. That is, using colored squares on the top of the robots and a HD-cam this system calculates the position based on color filters and morphological operations embedded in the Open CV libraries. All the code has been written in C++ to approximate a real time calculation. Besides, the MOT system is also connected to the Wi-Fi network, and it sends json objects within http posts which contain the position of each robot. This information is used to draw a potential field of heat which represents the temperature mantle over the field.</p>
 
 <a href="http://es.tinypic.com?ref=nodlag" target="_blank"><img src="http://i59.tinypic.com/nodlag.jpg" border="0" alt="Image and video hosting by TinyPic"></a>
 
 <h4>Presenting the dish: Graphical User Interface</h4>
-<p>not-gs and javascript (interprates json) draws the heat map. </p>
+
