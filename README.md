@@ -19,7 +19,7 @@
 <a href="http://es.tinypic.com?ref=6zq6wg" target="_blank"><img src="http://i58.tinypic.com/6zq6wg.jpg" border="0" alt="Image and video hosting by TinyPic"></a>
 
 <h4>MiniBots</h4>
-<p>The miniBots are hacked Chinese toys which have been reconstructed adding two sensors: a temperature sensor LM35 in full range configuration, and gas sensor MQ-2 which can measure SnO2, LPG, propane, hydrogen and metane presence and concentration those gases. Also, each one of these robots are equipped with a RF module that let the miniBot send its measurements toward the user's screen through a web application. Lastly, an Arduino Nano controls the measurement and the communication functions in the mini-bot.</p>
+<p>The miniBots are hacked Chinese toys which have been reconstructed adding two sensors: a temperature sensor LM35 in full range configuration, and gas sensor MQ-2 which can measure SnO2, LPG, propane, hydrogen and metane presence and concentration of these gases. Also, each one of these robots are equipped with a RF module that let the miniBot send its measurements toward the user's screen through a web application. Lastly, an Arduino Nano controls the measurement and the communication functions in the mini-bot.</p>
 
 <a href="http://es.tinypic.com?ref=fu49id" target="_blank"><img src="http://i59.tinypic.com/fu49id.png" border="0" alt="Image and video hosting by TinyPic"></a>
 
