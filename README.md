@@ -16,7 +16,7 @@
 
 <p>Finally, at the top of the architecture lies the GUI and mapping system that display the heat map and determines the safest path over the field based on repulsive functions and path planning algorithms.</p>
 
-<a href="http://es.tinypic.com?ref=25jcsco" target="_blank"><img src="http://i57.tinypic.com/25jcsco.jpg" border="0" alt="Image and video hosting by TinyPic"></a>
+<a href="http://es.tinypic.com?ref=6zq6wg" target="_blank"><img src="http://i58.tinypic.com/6zq6wg.jpg" border="0" alt="Image and video hosting by TinyPic"></a>
 
 <h4>MiniBots</h4>
 <p>The miniBots are hacked Chinese toys which have been reconstructed adding two sensors: a temperature sensor LM35 in full range configuration, and gas sensor MQ-2 which can measure SnO2, LPG, propane, hydrogen and metane presence and concentration those gases. Also, each one of these robots are equipped with a RF module that let the miniBot send its measurements toward the user's screen through a web application. Lastly, an Arduino Nano controls the measurement and the communication functions in the mini-bot.</p>
