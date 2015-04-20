@@ -1,6 +1,6 @@
 # Sensor Your Swarm Project
 
-<p>Picture hundreds of mini-robots sensing a dangerous area and a processing system that will allow the user to determine a safe path and to avoid deathly objects. This is how our solution faces the challenge "Sensor Yourself".</p>
+<p>Picture hundreds of mini-robots sensing a dangerous area and a processing system that will allow the user to determine a safe path and to avoid deathly objects. This what our project attemps to display.</p>
 
 <IMG SRC="http://i.dailymail.co.uk/i/pix/2011/08/23/article-0-02D26216000005DC-732_468x375.jpg" ALT="some text" WIDTH=320 HEIGHT=320>---------<IMG SRC="http://groups.csail.mit.edu/drl/BoeingPages/ResearchProblems/whole-swarm-from-above.jpg" ALT="some text" WIDTH=320 HEIGHT=320>
 
