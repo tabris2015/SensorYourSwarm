@@ -1,0 +1,39 @@
+<div class="navbar navbar-default navbar-static-top" ng-controller="NavbarCtrl">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" ng-click="isCollapsed = !isCollapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">IoT</a>
+    </div>
+    <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+      <ul class="nav navbar-nav">
+        <li ng-repeat="item in menu" ng-show="isValidRole(item.role)" ng-class="{active: isActive(item.link)}">
+            <a ng-href="{{item.link}}">{{item.title}}</a>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+
+        <li ng-show="isLoggedIn() && getCurrentUser().role == 'student' " class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ getCurrentUser().currentClass.alias }} <span class="caret"></span></a>
+          <ul  class="dropdown-menu" role="menu">
+            <li ng-repeat="theclass in getCurrentUser().classes"><a href="#">{{ theclass.alias }}</span></a></li>
+          </ul>
+        </li>
+
+        <li ng-show="isLoggedIn()" class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"> </span><span> {{ getCurrentUser().id }} <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li ng-show="isLoggedIn()" ng-class="{active: isActive('/settings')}"><a href="/settings"><span>Settings</span></a></li>
+            <li ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">Logout</a></li>
+          </ul>
+        </li>
+        <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}"><a href="/login" >Login</a></li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+doctype 5
+html
+  head
+    script(src='/js/jquery.min.js', type='text/javascript')
+  body
+    input#publish(type='button', value= 'Publish')
+    ul#messages
+    script(type='text/javascript')
+      var es = new EventSource('/stream');
+      es.onmessage = function(e) { 
+        $('#messages').append("<li>" + e.data + "</li>") 
+      }
+      $("#publish").click(function () {
+        $.post("/publish")
+      })
+

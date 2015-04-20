@@ -1,0 +1,396 @@
+  <head>
+    <style>
+      #heatmapContainerWrapper { width:100%; height:100%; position:absolute; background:rgba(0,0,0,.1);  }
+      #heatmapContainer { width:810px; height:490px; border: 1px solid #333333;}
+      #heatmapLegend { width:260px; background:white; position:absolute; top:0; right:0; padding:30px; border: 1px solid #333333; }
+      #min { float:left; }
+      #max { float:right; }
+      h1 { position:absolute; background:white; padding:10px;}
+    </style>
+  </head>
+
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+
+    <div id="heatmapContainerWrapper">
+      <div id="heatmapContainer">
+      </div>
+
+<!--
+      <div id="heatmapLegend">
+        <h2>Descriptive Legend Title</h2>
+        <span id="min"></span>
+        <span id="max"></span>
+        <img id="gradient" src="" style="width:100%" />
+      </div>
+!-->
+    </div>
+  <pre><span id="points"></span></pre>
+</div>
+
+<script>
+// minimal heatmap instance configuration
+var heatmapInstance = h337.create({
+  container: document.querySelector('#heatmapContainerWrapper')
+});
+
+// now generate some random data
+var max = 100;
+var incr = 4;
+var width = 800;
+var height = 480;
+var delayms = 5000;
+
+
+// if you have a set of datapoints always use setData instead of addData
+// for data initialization
+
+
+function getHeatPoints() {
+    var points = [];
+
+    $.getJSON( "http://localhost:5000/api/spaceapps/getmap", function( data ) {
+
+      var distance = $('#distance');
+      var compass  = $('#compass');
+      distance.html("Distance: " + data.bot1.distance + ' cm.');
+      compass.html("Compass: " + data.bot1.compass + '');
+
+      //bot1
+      var point = {
+        x: Math.floor(data.bot1.x),
+        y: Math.floor(data.bot1.y),
+        //value: 10,
+        //radius: 20,
+        value: Math.floor(data.bot1.t),
+        radius: Math.floor(data.bot1.t),
+
+
+      };
+      points.push(point);
+      point.x = point.x-5;
+      point.y = point.y-5;
+      point.value = point.value-5;
+      points.push(point);
+
+      point.x = point.x+9;
+      point.y = point.y+13;
+      points.push(point);
+
+      //bot2
+      var point = {
+        x: Math.floor(data.bot2.x),
+        y: Math.floor(data.bot2.y),
+        value: Math.floor(data.bot2.t),
+        radius: Math.floor(data.bot2.t),
+      };
+      points.push(point);
+
+      point.x = point.x+5;
+      point.y = point.y+5;
+      point.value = point.value-3;
+      points.push(point);
+
+      //bot3
+      var point = {
+        x: Math.floor(data.bot3.x),
+        y: Math.floor(data.bot3.y),
+        value: data.bot3.t,
+        radius: data.bot3.t,
+      };
+      points.push(point);
+
+      point.x = point.x+5;
+      point.y = point.y+5;
+      point.value = point.value-3;
+      points.push(point);
+
+      //bot4
+      var point = {
+        x: Math.floor(data.bot4.x),
+        y: Math.floor(data.bot4.y),
+        value: data.bot4.t,
+        radius: data.bot4.t,
+      };
+      points.push(point);
+
+      point.x = point.x+5;
+      point.y = point.y+5;
+      point.value = point.value-3;
+      points.push(point);
+
+      var data = {
+        max: max,
+        min: -2,
+        data: points
+      };
+
+      heatmapInstance.setData(data);
+
+/*
+    var items = [];
+      $.each( data, function( key, val ) {
+      items.push( "<li id='" + key + "'>" + val + "</li>" );
+    });
+
+    $( "<ul/>", {
+      "class": "my-new-list",
+      html: items.join( "" )
+    }).appendTo( "body" );
+*/
+    });
+
+}
+
+
+//setInterval(function () {getHeatPoints()}, 450);
+
+function doHeatPoints() {
+    var points = [];
+    var max = 100;
+
+      var distance = $('#distance');
+      var compass  = $('#compass');
+
+      for (var y = 0; y <= height; y += incr) {
+        for (var x = 0; x <= width; x += incr) {
+          val = (Math.abs(x-200)*Math.floor(y-120))/(180000)*max;
+          if (x < 340) {
+            val += Math.random()*5;
+          }
+          if (x < 320) {
+            val += Math.random()*5;
+          }
+          if (x < 310) {
+            val += Math.random()*10;
+          }
+          if (x < 300) {
+            val += Math.random()*5;
+          }
+          if (x < 250) {
+            val += Math.random()*20;
+          }
+          if (x < 150) {
+            val += Math.random()*25;
+          }
+          if (x < 180) {
+            val += Math.random()*20;
+          }
+          if (x < 200) {
+            val += Math.random()*10;
+          }
+          if (x < 220) {
+            val += Math.random()*5;
+          }
+
+          if (y < 50 && x < 470) {
+            val += Math.random()*20+8;
+          }
+          if (y < 85 && x < 470 && x > 100) {
+            val += Math.random()*20+5;
+          }
+
+          if (y < 60 && x < 470 && x > 100) {
+            val += Math.random()*20;
+          }
+
+          if (y < 55 && x < 470 && x > 150) {
+            val += Math.random()*25;
+          }
+
+          if (y < 75 && x < 470 && x > 200) {
+            val += Math.random()*25;
+          }
+
+          if (val > max) {
+            val = max - Math.random()*2;
+          }
+
+          var point = {
+            x: x,
+            y: y,
+            value: Math.floor(val),
+            radius: Math.floor(Math.random()*incr+2*incr/3),
+          };
+          points.push(point);
+        }
+      }
+
+
+      var data = {
+        max: max,
+        min: -2,
+        data: points
+      };
+
+      $('#points').html(JSON.stringify(heatpoints));
+      heatmapInstance.setData(data);
+}
+
+var zim = [];
+var zimlergIteration = 0;
+
+function addPoint(x,y) {
+  var i = Math.floor ( Math.floor(x/4) + Math.floor(y/4)*201 );
+  var value = heatpoints.data[i].value;
+  heatpoints.data[i].value = Math.abs(heatpoints.data[i].value);
+  //console.log(x,y,value);
+  if (value >= -99 ) {
+    heatmapInstance.addData(heatpoints.data[i]);
+  }
+  heatpoints.data[i].value = -100;
+}
+
+function showOverlord(x, y) {
+  var points = [];
+
+  var i = Math.floor ( Math.floor(x/4) + Math.floor(y/4)*201 );
+  $('#points').html(JSON.stringify(heatpoints.data[i] ));
+
+  addPoint(x,y);
+}
+
+function moveZimlerg(id) {
+    //y
+    r = Math.random();
+    if (r < 0.3) {
+      zim[id].dy = '-';
+    }
+    if (r > 0.7) {
+      zim[id].dy = '+';
+    }
+    if (r >= 0.3 && r <= 0.7) {
+      zim[id].dy = ' ';
+    }
+
+    //x
+    r = Math.random();
+    if (r < 0.3) {
+      zim[id].dx = '-';
+    }
+    if (r > 0.7) {
+      zim[id].dx = '+';
+    }
+    if (r >= 0.3 && r <= 0.7) {
+      zim[id].dx = ' ';
+    }
+
+    //check borders
+    if (zim[id].y >= 460 && zim[id].dy == '+') {
+      zim[id].dy = '-';
+    }
+
+    if (zim[id].x >= 780 && zim[id].dx == '+') {
+      zim[id].dx = '-';
+    }
+
+    if (zim[id].x <= 30 && zim[id].dx == '-') {
+      zim[id].dx = '+';
+    }
+    if (zim[id].y <= 25 && zim[id].dy == '-') {
+      zim[id].dy = '+';
+    }
+
+
+    //move according direction
+    if (zim[id].dx == '-') {
+      zim[id].x = zim[id].x - 12;
+    }
+    if (zim[id].dx == '+') {
+      zim[id].x = zim[id].x + 12;
+    }
+    if (zim[id].dy == '-') {
+      zim[id].y = zim[id].y - 12;
+    }
+    if (zim[id].dy == '+') {
+      zim[id].y = zim[id].y + 12;
+    }
+}
+
+function showZimlerg() {
+  zimlergIteration++;
+
+  for (id=0; id < zim.length; id++) {
+    moveZimlerg(id);
+
+    var x = zim[id].x;
+    var y = zim[id].y;
+
+    addPoint(x,y);
+    addPoint(x-4,y-4);
+    addPoint(x  ,y-4);
+    addPoint(x+4,y-4);
+    //addPoint(x+4,y);
+    //addPoint(x-4,y+4);
+    //addPoint(x  ,y+4);
+    //addPoint(x+4,y+4);
+/*
+    addPoint(x+2,y);
+    addPoint(x-2,y);
+    addPoint(x+2,y-2);
+    addPoint(x-2,y-2);
+
+    addPoint(x,y+2);
+    addPoint(x,y+2);
+    */
+  }
+
+  if (zimlergIteration < 2000) {
+    setTimeout( showZimlerg, 5);
+  }
+}
+
+
+function getHeatPoints() {
+  //zim[0] = {"x" : 680, "y": 50, "dx" : "+", "dy": "-" };
+
+  zim[0] = {"x" : 300, "y": 460, "dx" : "-", "dy": "-"};
+  zim[1] = {"x" : 300, "y": 440, "dx" : "-", "dy": "-" };
+  zim[2] = {"x" : 300, "y": 420, "dx" : "-", "dy": "-" };
+  zim[3] = {"x" : 300, "y": 400, "dx" : "-", "dy": "-" };
+  zim[4] = {"x" : 300, "y": 380, "dx" : "-", "dy": "-"};
+  zim[5] = {"x" : 300, "y": 360, "dx" : "-", "dy": "-" };
+  zim[6] = {"x" : 300, "y": 340, "dx" : "+", "dy": "-" };
+  zim[7] = {"x" : 300, "y": 320, "dx" : "+", "dy": "-" };
+  zim[8] = {"x" : 300, "y": 200, "dx" : "+", "dy": "-" };
+  zim[9] = {"x" : 300, "y": 200, "dx" : "+", "dy": "-" };
+
+  zim[10] = {"x" : 380, "y": 460, "dx" : "+", "dy": "-" };
+  zim[11] = {"x" : 380, "y": 440, "dx" : "+", "dy": "-" };
+  zim[12] = {"x" : 380, "y": 420, "dx" : "+", "dy": "-" };
+  zim[13] = {"x" : 380, "y": 400, "dx" : "+", "dy": "-" };
+  zim[14] = {"x" : 380, "y": 380, "dx" : "+", "dy": "-" };
+  zim[15] = {"x" : 380, "y": 360, "dx" : "+", "dy": "-" };
+  zim[16] = {"x" : 380, "y": 340, "dx" : "+", "dy": "-" };
+  zim[17] = {"x" : 380, "y": 320, "dx" : "+", "dy": "-" };
+  zim[18] = {"x" : 380, "y": 200, "dx" : "+", "dy": "-" };
+  zim[19] = {"x" : 380, "y": 200, "dx" : "+", "dy": "-" };
+
+
+  //heatmapInstance.setData(heatpoints);
+  var data = {
+    max: 100,
+    min: -2,
+    data: []
+  };
+  heatmapInstance.setData(data);
+
+  step1();
+}
+
+
+function step1() {
+    //showOverlord( 300, 475);
+    zimlergIteration = 0;
+    showZimlerg();
+
+    //setTimeout( step2, delayms)
+}
+
+
+
+//doHeatPoints();
+getHeatPoints();
+
+</script>
