@@ -1,8 +1,8 @@
 <h2>COORDINATOR ROBOT</h2>
 <p>The coordinator robot is more sophisticated than the minibots and has 2 main tasks:</p>
 <ul>
-  <li>Serve as a gateway for the collected data from the minibots which are pretty simple robots</li>
-  <li>and show the optimal path across the potentially dangerous enviroment avoiding any harm</li>
+  <li>Serve as a gateway for the collected data from the minibots.</li>
+  <li>and show the optimal path across the potentially dangerous enviroment avoiding any harm.</li>
   
 </ul>
 <p>this robot is based on a Raspberry Pi computer which communicate with the swarm
