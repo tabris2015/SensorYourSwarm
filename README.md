@@ -6,7 +6,7 @@
 
 <h4>Sensing a hazardous location with a swarm of random walkers</h4>
 
-<p>"Sensor Your Swarm" provides humans a way to navigate in dangerous environments such as airplanes accidents, shipwrenks and outer space exploring situations. As a bio-inspired robotic system, this project hands in a prototype which mimics the random movement of flies swarms and applies it to measure risky gases and deathly temperatures in hazardous locations. This multiple measurements allows us to graph on a web-page a safe path through the field dodging obstacles. Furthermore, in this project a main robot acts as a guide dog which could lead a person along the safe path while it is gathering all the information sent by each measurement terminal (mini-robot).</p>
+<p>"Sensor Your Swarm" provides humans a way to navigate in dangerous environments such as airplanes accidents, shipwrenks and outer space exploring situations. As a bio-inspired robotic system, this project hands in a prototype which mimics the random movement of flies swarms and applies it to measure risky gases and deathly temperatures in hazardous locations. This multiple measurements enables the system to graph on a web-page a safe path and allows the user to follow a that path through the field dodging perilous obstacles. Furthermore, in this project a main robot acts as a guide dog which could lead a person along the before mentioned path while it is gathering all the information sent by each measurement terminal (mini-robot).</p>
 
 <h4>System's architecture</h4>
 
@@ -16,10 +16,10 @@
 
 <p>Finally, at the top of the architecture lies the GUI and mapping system that display the heat map and determines the safest path over the field based on repulsive functions and path planning algorithms.</p>
 
-<a href="http://es.tinypic.com?ref=6zq6wg" target="_blank"><img src="http://i58.tinypic.com/6zq6wg.jpg" border="0" alt="Image and video hosting by TinyPic"></a>
+<a href="http://es.tinypic.com?ref=25jcsco" target="_blank"><img src="http://i57.tinypic.com/25jcsco.jpg" border="0" alt="Image and video hosting by TinyPic"></a>
 
 <h4>MiniBots</h4>
-<p>The miniBots are hacked Chinese toys which have been reconstructed adding two sensors: a temperature sensor LM35 in full range configuration, and gas sensor MQ-2 which can measure SnO2, LPG, propane, hydrogen and metane presence and concentration those gases. Also, each one of these robots are equipped with a RF module that let the miniBot send its measurements toward the user's screen through a web application. Lastly, an arduino-nano controls the measurement and the communication functions in the mini-bot.</p>
+<p>The miniBots are hacked Chinese toys which have been reconstructed adding two sensors: a temperature sensor LM35 in full range configuration, and gas sensor MQ-2 which can measure SnO2, LPG, propane, hydrogen and metane presence and concentration those gases. Also, each one of these robots are equipped with a RF module that let the miniBot send its measurements toward the user's screen through a web application. Lastly, an Arduino Nano controls the measurement and the communication functions in the mini-bot.</p>
 
 <a href="http://es.tinypic.com?ref=fu49id" target="_blank"><img src="http://i59.tinypic.com/fu49id.png" border="0" alt="Image and video hosting by TinyPic"></a>
 
@@ -37,5 +37,7 @@
 
 <a href="http://es.tinypic.com?ref=nodlag" target="_blank"><img src="http://i59.tinypic.com/nodlag.jpg" border="0" alt="Image and video hosting by TinyPic"></a>
 
-<h4>Presenting the dish: Graphical User Interface</h4>
+<h4>Web application</h4>
+<p>The graphical user interface is a web app which is composed of a back-end that processes, stores and displays the received information on a map. The back-end was implemented with Node.JS and the database was designed using MongoDB. In order to achieve plots of the sensed parameters, the heatmap.js library was included in the front-end. Besides, the framework on the client-side of the web app was coded with AngularJS.</p>
 
+<a href="http://tinypic.com?ref=25z79yb" target="_blank"><img src="http://i59.tinypic.com/25z79yb.png" border="0" alt="Image and video hosting by TinyPic"></a>
